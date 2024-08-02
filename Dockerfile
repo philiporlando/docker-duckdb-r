@@ -1,7 +1,8 @@
-# Use the official R image as the base
-FROM rocker/r-ver:4.1.1 AS base
+# Stage 1: Build base image and install dependencies
+FROM rocker/r-ver:4.4.1 AS builder
 
 # Set environment variables
+ENV WORKDIR=/project
 ENV RENV_VERSION=1.0.7
 ENV RENV_PATHS_LIBRARY renv/library
 
@@ -16,7 +17,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory
-WORKDIR /project
+WORKDIR ${WORKDIR}
 
 # Copy renv files
 # https://rstudio.github.io/renv/articles/docker.html
@@ -34,12 +35,13 @@ ENV RENV_PATHS_CACHE renv/.cache
 RUN R -e "install.packages('renv', repos='https://cloud.r-project.org', type='source', version='${RENV_VERSION}')"
 
 # Restore R packages using renv
-RUN R -e "options(renv.config.cache.symlinks = TRUE); renv::settings\$snapshot.type('all'); renv::restore();"
+RUN R -e "renv::restore()"
 
-FROM base
+# Stage 2: final image with application code
+FROM rocker/r-ver:4.4.1
 
-WORKDIR /project
-COPY --from=base /project .
+WORKDIR ${WORKDIR}
+COPY --from=builder ${WORKDIR} .
 
 # Copy project files
 COPY . .
