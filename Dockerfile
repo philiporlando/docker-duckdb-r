@@ -17,14 +17,14 @@ RUN apt-get update && apt-get install -y \
 # Set the working directory
 WORKDIR /usr/src/app
 
-# Copy necessary files
+# Copy project files
 COPY . .
 
 # Install specific version of renv
 RUN R -e "install.packages('renv', repos='https://cloud.r-project.org', type='source', version='${RENV_VERSION}')"
 
-# Restore packages using renv
+# Restore R packages using renv
 RUN R -e "renv::restore()"
 
-# Command to run your script
+# Command to run the targets pipeline
 CMD ["Rscript", "--verbose", "run.R"]
