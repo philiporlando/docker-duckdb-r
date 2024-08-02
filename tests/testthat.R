@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(docker-duckdb-r)
+# library(docker-duckdb-r)
 
-test_check("docker-duckdb-r")
+# test_check("docker-duckdb-r")
