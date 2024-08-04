@@ -1,2 +1,5 @@
 *.code-workspace
 _targets/
+data/
+
+!.gitkeep
