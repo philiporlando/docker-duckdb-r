@@ -4,9 +4,8 @@ FROM rocker/r-ver:4.4.1 AS base
 # Set environment variables
 ENV WORKDIR=/project
 ENV RENV_VERSION=1.0.7
-ENV RENV_DIR=${WORKDIR}/renv
-ENV RENV_PATHS_LIBRARY=${RENV_DIR}/library
-ENV RENV_PATHS_CACHE=${RENV_DIR}/.cache
+ENV RENV_PATHS_LIBRARY=${WORKDIR}/renv/library
+ENV RENV_PATHS_CACHE=${WORKDIR}/renv/.cache
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
