@@ -9,7 +9,7 @@ library(qs)
 # library(tarchetypes) # Load other packages as needed.
 
 # Set target options:
-tar_option_set(
+targets::tar_option_set(
   packages = c("tibble"),
   format = "qs"
   # controller = crew::crew_controller_local(workers = 2, seconds_idle = 60)
