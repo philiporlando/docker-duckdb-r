@@ -2,7 +2,7 @@ ingest_data <- function(source_file, duckdb_file) {
   table_name <- "medi_cal_managed_care_providers"
   con <- DBI::dbConnect(duckdb::duckdb(), dbdir = duckdb_file)
 
-  # importing directly from duckdb is ideal, but read_csv() was raising parsing errors...
+  # duckdb read_csv() error: CSV options could not be auto-detected. Consider setting parser options manually.
   df <- readr::read_csv(
     source_file,
     col_types = readr::cols(
