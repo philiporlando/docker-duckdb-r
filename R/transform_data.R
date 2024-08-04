@@ -1,4 +1,5 @@
 transform_data <- function(ingest_hash, duckdb_file) {
+  table_name <- "telehealth_by_taxonomy"
   con <- DBI::dbConnect(duckdb::duckdb(), dbdir = duckdb_file)
   df <- dplyr::tbl(con, "medi_cal_managed_care_providers") |>
     dplyr::filter(
@@ -13,7 +14,13 @@ transform_data <- function(ingest_hash, duckdb_file) {
     dplyr::arrange(desc(n_telehealth)) |>
     dplyr::collect()
 
-  DBI::dbWriteTable(con, "telehealth_by_taxonomy", df, overwrite = TRUE)
+  DBI::dbWriteTable(con, table_name, df, overwrite = TRUE)
+
+  hash <- dplyr::tbl(con, table_name) |>
+    dplyr::collect() |>
+    digest::digest()
+
   DBI::dbDisconnect(con)
-  return(df)
+  
+  return(hash)
 }
