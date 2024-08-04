@@ -5,25 +5,25 @@
 
 # Load packages required to define the pipeline:
 library(targets)
+library(qs)
 # library(tarchetypes) # Load other packages as needed.
 
 # Set target options:
 tar_option_set(
   packages = c("tibble"),
-  format = "qs",
-  controller = crew::crew_controller_local(workers = 2, seconds_idle = 60)
+  format = "qs"
+  # controller = crew::crew_controller_local(workers = 2, seconds_idle = 60)
 )
 
 # Run the R scripts in the R/ folder with your custom functions:
-tar_source()
+# tar_source()
 # tar_source("other_functions.R") # Source other scripts as needed.
 
 # Replace the target list below with your own:
 list(
   tar_target(
     name = data,
-    command = tibble(x = rnorm(100), y = rnorm(100))
-    # format = "qs" # Efficient storage for general data objects.
+    command = tibble(x = rnorm(100), y = rnorm(100)) 
   ),
   tar_target(
     name = model,

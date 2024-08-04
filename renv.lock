@@ -9,6 +9,13 @@
     ]
   },
   "Packages": {
+    "BH": {
+      "Package": "BH",
+      "Version": "1.84.0-0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "a8235afbcd6316e6e91433ea47661013"
+    },
     "Matrix": {
       "Package": "Matrix",
       "Version": "1.7-0",
@@ -36,6 +43,13 @@
       ],
       "Hash": "470851b6d5d0ac559e9d01bb352b4021"
     },
+    "RApiSerialize": {
+      "Package": "RApiSerialize",
+      "Version": "0.1.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "12cbd319d03b55edaa195695a155bb30"
+    },
     "Rcpp": {
       "Package": "Rcpp",
       "Version": "1.0.13",
@@ -46,6 +60,16 @@
         "utils"
       ],
       "Hash": "f27411eb6d9c3dada5edd444b8416675"
+    },
+    "RcppParallel": {
+      "Package": "RcppParallel",
+      "Version": "5.1.8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "21c1466a17de6b1f5f4bc0569868775e"
     },
     "backports": {
       "Package": "backports",
@@ -133,32 +157,6 @@
       ],
       "Hash": "859d96e65ef198fd43e82b9628d593ef"
     },
-    "crew": {
-      "Package": "crew",
-      "Version": "0.9.5",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "R6",
-        "cli",
-        "data.table",
-        "getip",
-        "later",
-        "mirai",
-        "nanonext",
-        "processx",
-        "promises",
-        "ps",
-        "rlang",
-        "stats",
-        "tibble",
-        "tidyselect",
-        "tools",
-        "utils"
-      ],
-      "Hash": "1498e9c5b0f2a644d7c4a8534c9d20fe"
-    },
     "data.table": {
       "Package": "data.table",
       "Version": "1.15.4",
@@ -232,13 +230,6 @@
       ],
       "Hash": "962174cf2aeb5b9eea581522286a911f"
     },
-    "fastmap": {
-      "Package": "fastmap",
-      "Version": "1.2.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "aa5e1cd11c2d15497494c5292d7ffcc8"
-    },
     "fs": {
       "Package": "fs",
       "Version": "1.6.4",
@@ -249,16 +240,6 @@
         "methods"
       ],
       "Hash": "15aeb8c27f5ea5161f9f6a641fafd93a"
-    },
-    "getip": {
-      "Package": "getip",
-      "Version": "0.1-4",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R"
-      ],
-      "Hash": "0e81e7f976441581680fa2ebc5866212"
     },
     "glue": {
       "Package": "glue",
@@ -331,17 +312,6 @@
       ],
       "Hash": "acf380f300c721da9fde7df115a5f86f"
     },
-    "later": {
-      "Package": "later",
-      "Version": "1.3.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "Rcpp",
-        "rlang"
-      ],
-      "Hash": "a3e051d405326b8b0012377434c62b37"
-    },
     "lattice": {
       "Package": "lattice",
       "Version": "0.22-6",
@@ -379,27 +349,6 @@
         "R"
       ],
       "Hash": "7ce2733a9826b3aeb1775d56fd305472"
-    },
-    "mirai": {
-      "Package": "mirai",
-      "Version": "1.1.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "nanonext"
-      ],
-      "Hash": "f8b0cda5304cad0b629e98c09aad5471"
-    },
-    "nanonext": {
-      "Package": "nanonext",
-      "Version": "1.1.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R"
-      ],
-      "Hash": "1f884ea35086b957409a9d351eaa2d9e"
     },
     "pillar": {
       "Package": "pillar",
@@ -485,22 +434,6 @@
       ],
       "Hash": "0c90a7d71988856bad2a2a45dd871bb9"
     },
-    "promises": {
-      "Package": "promises",
-      "Version": "1.3.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R6",
-        "Rcpp",
-        "fastmap",
-        "later",
-        "magrittr",
-        "rlang",
-        "stats"
-      ],
-      "Hash": "434cd5388a3979e74be5c219bcd6e77d"
-    },
     "ps": {
       "Package": "ps",
       "Version": "1.7.7",
@@ -511,6 +444,20 @@
         "utils"
       ],
       "Hash": "878b467580097e9c383acbb16adab57a"
+    },
+    "qs": {
+      "Package": "qs",
+      "Version": "0.26.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "BH",
+        "R",
+        "RApiSerialize",
+        "Rcpp",
+        "stringfish"
+      ],
+      "Hash": "e372cf3f70e3c7a768ec5ea14f0f3edd"
     },
     "rematch2": {
       "Package": "rematch2",
@@ -562,6 +509,18 @@
         "R"
       ],
       "Hash": "28495386ab3f1e83c237c6d519508fe7"
+    },
+    "stringfish": {
+      "Package": "stringfish",
+      "Version": "0.16.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "Rcpp",
+        "RcppParallel"
+      ],
+      "Hash": "b7eb79470319ae71d4b5ed9cd7bf7294"
     },
     "targets": {
       "Package": "targets",
