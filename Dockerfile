@@ -57,6 +57,9 @@ COPY run.R run.R
 
 RUN mkdir -p data
 
+# Mount the _targets directory as a volume
+VOLUME ${WORKDIR}/_targets
+
 # Restore R packages from the builder stage's cache
 # TODO renv would install again within the runner stage?
 # RUN R -e "renv::restore()"
