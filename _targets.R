@@ -12,16 +12,16 @@ targets::tar_source()
 
 list(
   tar_target(
-    name = url,
-    command = get_medi_cal_managed_care_providers_url()
+    name = data_url,
+    command = get_data_url()
   ),
   tar_target(
     name = url_modified_time,
-    command = get_url_modified_time(url)
+    command = get_url_modified_time(data_url)
   ),
   tar_target(
-    name = medi_cal_managed_care_providers_file,
-    command = download_medi_cal_managed_care_providers(url, url_modified_time),
+    name = raw_data_file,
+    command = download_data(data_url, url_modified_time),
     format = "file",
   ),
   tar_target(
@@ -29,9 +29,16 @@ list(
     command = setup_duckdb()
   ),
   tar_target(
-    name = ingested_medi_cal_managed_care_providers,
-    command = ingest_medi_cal_managed_care_providers(
-      medi_cal_managed_care_providers_file,
+    name = ingested_data,
+    command = ingest_data(
+      raw_data_file,
+      duckdb_file
+    )
+  ),
+  tar_target(
+    name = transformed_data,
+    command = transform_data(
+      ingested_data,
       duckdb_file
     )
   )
