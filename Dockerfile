@@ -54,6 +54,8 @@ COPY --from=builder ${WORKDIR} .
 # Copy project files
 COPY _targets _targets
 COPY _targets.R _targets.R 
+COPY R R
+COPY run.R run.R
 
 # Restore R packages from the builder stage's cache
 # TODO renv would install again within the runner stage?
