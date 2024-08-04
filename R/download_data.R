@@ -19,12 +19,7 @@ return(url_modified_time)
 
 
 download_data <- function(url, url_modified_time) {
-  dir <- "data"
-  destfile <- file.path(dir, "Medi-Cal_Managed_Care_Provider_Listing.csv")
-
-  if (!dir.exists(dirname(dir))) {
-    dir.create(dir, recursive = TRUE)
-  }
+  destfile <- "data/Medi-Cal_Managed_Care_Provider_Listing.csv"
   
   response <- httr2::request(url) |>
     httr2::req_timeout(300) |>
