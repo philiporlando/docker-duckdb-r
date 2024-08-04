@@ -21,6 +21,6 @@ transform_data <- function(ingest_hash, duckdb_file) {
     digest::digest()
 
   DBI::dbDisconnect(con)
-  
+
   return(hash)
 }
