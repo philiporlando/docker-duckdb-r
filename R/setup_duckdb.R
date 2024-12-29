@@ -5,6 +5,6 @@ setup_duckdb <- function() {
     con <- DBI::dbConnect(duckdb::duckdb(), dbdir = duckdb_file)
     DBI::dbDisconnect(con, shutdown = TRUE)
   }
-
+  
   return(duckdb_file)
 }

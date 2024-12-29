@@ -1,6 +1,9 @@
 transform_data <- function(ingest_hash, duckdb_file) {
   table_name <- "telehealth_by_taxonomy"
+
   con <- DBI::dbConnect(duckdb::duckdb(), dbdir = duckdb_file)
+  on.exit(DBI::dbDisconnect(con))
+  
   df <- dplyr::tbl(con, "medi_cal_managed_care_providers") |>
     dplyr::filter(
       telehealth %in% c("B", "O"),
@@ -19,8 +22,6 @@ transform_data <- function(ingest_hash, duckdb_file) {
   hash <- dplyr::tbl(con, table_name) |>
     dplyr::collect() |>
     digest::digest()
-
-  DBI::dbDisconnect(con)
 
   return(hash)
 }
