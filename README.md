@@ -31,5 +31,6 @@ docker run
 
 - `Dockerfile`: Defines the Docker image and specifies how the R environment is built.
 - `R/`: Contains R scripts with function definitions used by `{targets}`.
+- `_targets.R`: The target script file that defines the pipeline. See [The {targets} R package user manual](https://books.ropensci.org/targets/) for more details.
 - `data/`: Any source data and the DuckDB database file are stored here.
 `tests/`: TBD test suite built around `{testthat}`.
